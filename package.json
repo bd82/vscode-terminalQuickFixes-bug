@@ -1,0 +1,63 @@
+{
+  "name": "vscode-terminal-api-bug",
+  "displayName": "vscode-terminal-api-bug",
+  "description": "Reproduce bug with terminalQuickFix and command arguments",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "main": "./extension.js",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "enabledApiProposals": [
+    "terminalQuickFixProvider"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "terminalQuickFixes": [
+      {
+        "id": "myquickfixNoArg",
+        "commandLineMatcher": "",
+        "commandExitResult": "error",
+        "outputMatcher": {
+          "lineMatcher": "",
+          "anchor": "bottom",
+          "length": 40,
+          "offset": 0
+        }
+      },
+      {
+        "id": "myquickfixWithArg",
+        "commandLineMatcher": "",
+        "commandExitResult": "error",
+        "outputMatcher": {
+          "lineMatcher": "",
+          "anchor": "bottom",
+          "length": 40,
+          "offset": 0
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "npm-run-all clean download:*",
+    "clean": "rm -rf types && mkdir -p types",
+    "download:proposed-apis": "cd types && dts dev",
+    "download:main-apis": "cd types && dts main"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.27",
+    "@vscode/dts": "0.4.1",
+    "prettier": "3.5.3",
+    "npm-run-all2": "7.0.2"
+  }
+}
