@@ -25,11 +25,11 @@ function activate(context) {
       }
       const actions = [];
 
-      const jouleAction = {
+      const action = {
         command: commandName,
         title: "Explain No Args",
       };
-      actions.push(jouleAction);
+      actions.push(action);
 
       return actions;
     },
@@ -43,12 +43,12 @@ function activate(context) {
       }
       const actions = [];
 
-      const jouleAction = {
+      const action = {
         command: commandName,
         title: "Explain With Args",
         arguments: ["mars"],
       };
-      actions.push(jouleAction);
+      actions.push(action);
 
       return actions;
     },
