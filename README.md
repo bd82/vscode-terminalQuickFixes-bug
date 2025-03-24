@@ -35,5 +35,11 @@ This only happens when the command refernece includes an `arguments` property, e
 2. The option "WithArgs" will do nothing.
    - In the extension host's output channel you will see:
    - ![image](https://github.com/user-attachments/assets/49785f72-2b79-4aa0-b52e-3b09b1c6a0c9)
- 
+
+## Suspect Root Cause
+
+There appears to be logic around caching (with generated ID) of commands with arguments
+- https://github.com/microsoft/vscode/blob/e47951d00e72efa8d3b1a0eddddb02f451daf3d9/src/vs/workbench/api/common/extHostCommands.ts#L387-L403
+
+**Perhaps the logic which invokes the commands in terminal quickFix scenario does not try to first reterive the cached command (by ID)?**
 
